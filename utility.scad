@@ -2,7 +2,7 @@
 
 Version: R1
 Title: Utility
-Description: Miscellaneous utility modules I developed over the course of several projects to reuse common operations that were seen over various models,
+Description: Miscellaneous utility modules I developed over the course of several projects to reuse common operations that were seen over various models.
 
 History:
 * ??/??/2024 - R1 - First release to be with a model whenever it is released. 
@@ -233,18 +233,3 @@ module castellate(width,size, m = 0)
 
 }
 
-
-cube2 = [2,2,2];
-d = 20;
-cube([d,2,2]);
-move_z(2)
-    castellate(d,cube2);
-    
-move_y(4)
-{
-    cube3 = [4,2,2];
-    d = 19;
-    cube([d,2,2]);
-    move_z(2)
-    castellate(d,cube3);
-}
