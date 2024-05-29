@@ -1,11 +1,11 @@
-/*This library is placed into the public domain by NMR_Scientist.
+/*This library, part of UtilitySCAD, is placed into the public domain by NMR_Scientist.
 
 Version: R1
-Title: Utility
+Title: UtilitySCAD
 Description: Miscellaneous utility modules I developed over the course of several projects to reuse common operations that were seen over various models.
 
 History:
-* ??/??/2024 - R1 - First release to be with a model whenever it is released. 
+* ??/??/2024 - R1 - First release to be with a model whenever it is released.
 */
 
 $fa = 1;
@@ -40,7 +40,7 @@ module move_z (z)
     }
 }
 
-//Move objects by a given point in all direction. -1 would means moving to the left, moving back, and moving down by one point. 
+//Move objects by a given point in all direction. -1 would means moving to the left, moving back, and moving down by one point.
 module move_by(point)
 {
     translate([point,point,point])
@@ -114,7 +114,7 @@ module bevel_up_back_45(width,length,height)
             rotate([0,90,0])
             {
                 triangle_prism(width,r);
-            }   
+            }
         }
         // Cut off to the required height.
         move_x(-m)
@@ -142,7 +142,7 @@ module center(centering_w,target_w)
     }
 }
 
-//Move object to a certain value of x, but also account for the object size, such that the object is place before the point x. For a postive value of x, that is before the x, for a negative value of x, that is next to x. Useful for dimensional accurate placement. 
+//Move object to a certain value of x, but also account for the object size, such that the object is place before the point x. For a postive value of x, that is before the x, for a negative value of x, that is next to x. Useful for dimensional accurate placement.
 module move_object_x(x,r)
 {
     diameter = r * 2;
@@ -168,7 +168,7 @@ module move_object_x(x,r)
 }
 
 
-//Move object to a certain value of z, but also account for the object size, such that the object is place before the point z. For a postive value of z, that is below of z, for a negative value of z, that is above z. Useful for dimensional accurate placement. 
+//Move object to a certain value of z, but also account for the object size, such that the object is place before the point z. For a postive value of z, that is below of z, for a negative value of z, that is above z. Useful for dimensional accurate placement.
 module move_object_z(z, r)
 {
     diameter = r * 2;
@@ -198,7 +198,7 @@ module move_object_z(z, r)
 module notches(n, multipler)
 {
     for (x = [1:n])
-    {   
+    {
         final_x = (x - 1) * multipler;
         move_x(final_x)
         {
@@ -214,7 +214,7 @@ module notches(n, multipler)
 function CastellateTotalW(w,size) = (w - 1) % 2 == 1 ? (w - 1) * size.x : w * size.x;
 
 
-//Center the resulting castellation of a certain cuboid size. 
+//Center the resulting castellation of a certain cuboid size.
 module castellate(width,size, m = 0)
 {
     total_notches = floor(width / size.x);
@@ -232,4 +232,3 @@ module castellate(width,size, m = 0)
     }
 
 }
-

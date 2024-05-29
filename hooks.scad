@@ -1,3 +1,5 @@
+ /*This library, part of UtilitySCAD, is placed into the public domain by NMR_Scientist. */
+
  use <utility.scad>;
 
 
@@ -105,8 +107,8 @@ module beveled_circular_hook(width,length,height,diameter,neck_w)
         bevel_up_back_45(width,length,height);
         translate([0,length - 2,above_bevel])
         {
-            
-            
+
+
             circular_hook(diameter,width,neck_w);
         }
     }
@@ -124,13 +126,12 @@ module circular_hook(diameter,width,neck_w)
     center(diameter,width)
     {
         hull()
-        {       
+        {
             hor_cylinder_y(1,r);
             move_object_z(diameter * 2,r)
-            {                        
+            {
                 hor_cylinder_y(1,r);
             }
         }
     }
 }
-
