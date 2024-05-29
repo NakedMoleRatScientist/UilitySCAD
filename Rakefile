@@ -1,4 +1,5 @@
-
+require "tempfile"
+require "zip"
 manifest =
 {
     :version => "R1",
@@ -7,12 +8,16 @@ manifest =
 directory_name = manifest[:project_name] + "-" + manifest[:version]
 
 task :create do
-    FileUtils.mkdir(directory_name)
-    FileUtils.cp("utility.scad",directory_name + "/utility.scad")
-    FileUtils.cp("examples.scad",directory_name + "/examples.scad")
-    FileUtils.cp("hooks.scad",directory_name + "/hooks.scad")
+     project_dir = Dir.getwd()
+     zip = (directory_name + ".zip")
+     list = ["utility.scad","examples.scad","hooks.scad"]
+     Zip::File.open(zip, create: true) do |zipfile|
+        list.each do |filename|
+        zipfile.add(filename, File.join(project_dir, filename))
+     end
+  end
 end
 
 task :remove do
-    FileUtils.rm_r(directory_name)
+    FileUtils.rm_r(directory_name + ".zip")
 end
